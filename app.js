@@ -4,6 +4,8 @@
 
 // CORS
 var cors = require('cors');
+// Inkludera dotenv-paketet
+require('dotenv').config();
 
 var createError = require('http-errors');
 var express = require('express');
@@ -12,7 +14,9 @@ var cookieParser = require('cookie-parser');
 // DEKLARERA UPPKOPPLING TILL DATABAS MED MONGOOSE
 var mongoose = require('mongoose');
 // LÄNK TILL DATABAS FÖR ATT CONNECTA
-mongoose.connect("mongodb+srv://chanbatte:MongoAtlas123@cluster0.l1azorg.mongodb.net/productsapi");
+//mongoose.connect("mongodb+srv://chanbatte:MongoAtlas123@cluster0.l1azorg.mongodb.net/productsapi");
+// Använda anslutningssträngen från .env-filen
+mongoose.connect(process.env.DB_CONNECTION_STRING);
 console.log(mongoose.connect);
 //TESTA CONNECTION
 var db = mongoose.connection;
@@ -31,6 +35,7 @@ var productsRouter = require('./routes/products');
 var app = express();
 
 // view engine setup
+// TESTKOMMENTAR
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
