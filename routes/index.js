@@ -1,7 +1,6 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 var path = require("path");
-
 
 // Deklarera mongoose
 // deklarera route ./models/productsModel.js
@@ -9,10 +8,6 @@ var mongoose = require("mongoose");
 var productsModel = require("../models/productsModel.js");
 
 /* GET CARS listing FROM DATABASE. */
-//req och res här är request- respektive response-objekten
-
-// mongoose övergår till att använda "promises" ist för callback.
-// använda async/await eller .then() istället.
 
 /*
 GAMLA SÄTTET
@@ -62,8 +57,6 @@ router.get("/", function (req, res, next) {
     });
 });
 
-
-
 // POST-request till databas
 
 router.post("/", function (req, res, next) {
@@ -80,10 +73,8 @@ router.post("/", function (req, res, next) {
     });
 });
 
-
-
 // DELETE-request till databas
-// Ex. med Postman - delete-request med url localhost:3000/productsModel/65a67926100de3ec69660c7b - (id)
+// Ex. med Postman - delete-request med url localhost:3000/65a67926100de3ec69660c7b - (id)
 // url = "/:id" för att peka på unika id:t - Express
 router.delete("/:id", function (req, res, next) {
   // kör findByIdAndDelete-metod på productsModel
@@ -96,8 +87,6 @@ router.delete("/:id", function (req, res, next) {
       next(err);
     });
 });
-
-
 
 // UPDATE-Request till databas
 //https://coursework.vschool.io/mongoose-crud/
@@ -122,8 +111,3 @@ router.put("/:id", function (req, res, next) {
 });
 
 module.exports = router;
-
-
-
-
-
