@@ -6,7 +6,7 @@ var cors = require("cors");
 require("dotenv").config();
 
 var createError = require("http-errors");
-var express = require("express");
+const express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 // DEKLARERA UPPKOPPLING TILL DATABAS MED MONGOOSE
@@ -28,11 +28,11 @@ var logger = require("morgan");
 // 2 st ROUTES - INDEX OCH products
 var indexRouter = require("./routes/index");
 var productsRouter = require("./routes/products");
+const aiRoutes = require("./routes/aiRoutes");
 
-var app = express();
+const app = express();
 
 // view engine setup
-// TESTKOMMENTAR
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
@@ -44,6 +44,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 app.use("/", indexRouter);
 app.use("/products", productsRouter);
+app.use("/", aiRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

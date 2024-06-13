@@ -1,45 +1,11 @@
-var express = require("express");
-var router = express.Router();
-var path = require("path");
+const express = require("express");
+const router = express.Router();
+const path = require("path");
 
 // Deklarera mongoose
 // deklarera route ./models/productsModel.js
-var mongoose = require("mongoose");
-var productsModel = require("../models/productsModel.js");
-
-/* GET CARS listing FROM DATABASE. */
-
-/*
-GAMLA SÄTTET
-router.get("/", function (req, res, next) {
-  //"find" är Mongoose funktion. err innehåller eventuellt fel, annars kommer resultatet att finnas i “cars”
-  carsModel.find(function (err, cars) {
-    if (err) return next(err);
-    else {
-      // OM det inte uppstår fel så svara med cars i JSON-format
-      res.json(cars);
-    }
-  });
-});
-*/
-
-// NYA SÄTTET MED async/await
-/*
-router.get("/", async function(req, res, next){
-  // AWAIT för att invänta svar på find()
-  try {
-    const cars = await carsModel.find();
-
-    // svar i JSON
-    res.json(cars);
-  } catch (error) {
-    // Om fel - kasta in error i next()
-    next(error);
-  }
-});
-*/
-
-// ANDRA sättet med .then()
+const mongoose = require("mongoose");
+const productsModel = require("../models/productsModel.js");
 
 // GET-REQUEST till databas
 
